@@ -21,7 +21,7 @@ public class FollowPlayer : MonoBehaviour {
 		playerZ = player.transform.position.z - 10;
 
 		playerX = player.transform.position.x;
-		follow = new Vector3(playerX / 10, 4f,playerZ);
+		follow = new Vector3(playerX / 2, 4f,playerZ);
 
 		transform.position = follow;
 	}

@@ -17,14 +17,16 @@ public class PlatformColorChange : MonoBehaviour {
 
 	void Start () 
 	{
-
+		timeLeft = transitionTime;
+		targetColor = new Color(Random.value, Random.value, Random.value);
+		gameObject.GetComponent<Renderer>().sharedMaterial.color = targetColor;
 	}
 
 	void Update()
 	{
 
 		time += Time.deltaTime;
-		//Debug.Log (time + "");
+
 		if (switchTime >= time)
 		{
 			time = 0;
@@ -32,7 +34,7 @@ public class PlatformColorChange : MonoBehaviour {
 			{
 				// transition complete
 				// assign the target color
-				gameObject.GetComponent<Renderer>().material.color = targetColor;
+				gameObject.GetComponent<Renderer>().sharedMaterial.color = targetColor;
 
 				// start a new transition
 				targetColor = new Color(Random.value, Random.value, Random.value);
@@ -42,7 +44,7 @@ public class PlatformColorChange : MonoBehaviour {
 			{
 				// transition in progress
 				// calculate interpolated color
-				gameObject.GetComponent<Renderer>().material.color = Color.Lerp(gameObject.GetComponent<Renderer>().material.color, targetColor, Time.deltaTime / timeLeft);
+				gameObject.GetComponent<Renderer>().sharedMaterial.color = Color.Lerp(gameObject.GetComponent<Renderer>().sharedMaterial.color, targetColor, Time.deltaTime / timeLeft);
 
 				// update the timer
 				timeLeft -= Time.deltaTime;

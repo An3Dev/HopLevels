@@ -14,8 +14,8 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 8
-  m_Fog: 0
-  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_Fog: 1
+  m_FogColor: {r: 1, g: 1, b: 1, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.01
   m_LinearFogStart: 0
@@ -169,6 +169,48 @@ Prefab:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 3b2e62476d5fb3e49a46dbc39dd9b511, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &370359883
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 370359885}
+  - component: {fileID: 370359884}
+  m_Layer: 0
+  m_Name: GameController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &370359884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 370359883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05111d6a9c89b5c4f8f5982551469dfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fallTime: 1
+  time: 0
+--- !u!4 &370359885
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 370359883}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1077063364
 GameObject:
   m_ObjectHideFlags: 0
@@ -282,8 +324,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2930e7d55e5521d4cbbc735679d1495c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 0.1
-  moveTime: 0.5
+  sensitivity: 20
 --- !u!114 &1077063371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -296,7 +337,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1077063369}
-  yVelocity: 10
+  yVelocity: 20
   mainCamera: {fileID: 1244160687}
 --- !u!1 &1236492283 stripped
 GameObject:
@@ -316,8 +357,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distanceBetweenPlatforms: 10
   timeScale: 0.8
-  minRange: -0.5
-  maxRange: 0.5
+  minRange: -4
+  maxRange: 4
+  minRangeSaved: 0
+  maxRangeSaved: 0
 --- !u!114 &1236492289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -329,8 +372,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d0bc84222be52a42a51841b66f0a9cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  switchTime: 0
-  transitionTime: 5
+  switchTime: 1
+  transitionTime: 10
 --- !u!1 &1244160684
 GameObject:
   m_ObjectHideFlags: 0
@@ -457,13 +500,13 @@ Light:
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
-    m_Resolution: -1
+    m_Type: 1
+    m_Resolution: 2
     m_CustomResolution: -1
-    m_Strength: 1
+    m_Strength: 0.5
     m_Bias: 0.05
     m_NormalBias: 0.4
-    m_NearPlane: 0.2
+    m_NearPlane: 0.1
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}

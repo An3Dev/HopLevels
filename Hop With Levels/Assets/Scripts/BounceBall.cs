@@ -36,7 +36,11 @@ public class BounceBall : MonoBehaviour {
 				start = true;
 			}
 				
-
+			if (start) {
+				if (GameControl.gameOver) {
+					rb.velocity = new Vector3(0, storedVelocity * -1, 0);
+				}
+			}
 
 		}
 	}
@@ -46,7 +50,7 @@ public class BounceBall : MonoBehaviour {
 	void OnCollisionEnter(Collision collision) {
 		//Debug.Log ("Time: " + Time.time);
 		if (start) {
-			rb.velocity = new Vector3 (0, storedVelocity, storedVelocity * 2);
+			rb.velocity = new Vector3 (0, storedVelocity, storedVelocity);
 		} else {
 			rb.velocity = new Vector3 (0, storedVelocity, 0);
 

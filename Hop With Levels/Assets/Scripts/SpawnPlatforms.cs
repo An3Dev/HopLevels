@@ -14,9 +14,11 @@ public class SpawnPlatforms : MonoBehaviour {
 
 	public float distanceBetweenPlatforms = 5;
 
-	public float timeScale;
+	public static float timeScale;
 
 	public float minRange, maxRange;
+
+	public float minRangeSaved, maxRangeSaved;
 
 	float time;
 	long totalPlatformsDestroyed = 0;
@@ -24,9 +26,17 @@ public class SpawnPlatforms : MonoBehaviour {
 
 	void Start () {
 		prefab = Resources.Load ("Platform") as GameObject;
+		minRangeSaved = minRange;
+		maxRangeSaved = maxRange;
 		for (int i = 0; i < 20; i++) {
+			if (i < 2) {
+				minRange = 0;
+				maxRange = 0;
+			} else {
+				minRange = minRangeSaved;
+				maxRange = maxRangeSaved;
+			}
 			spawnPlatforms ();
-
 		}
 
 		if (BounceBall.start) {
@@ -42,8 +52,9 @@ public class SpawnPlatforms : MonoBehaviour {
 			// Spawn every half second.
 			if (time >= 0.5f) {
 				time = 0;
+
 				spawnPlatforms ();
-			}
+			} 
 
 
 			if (currentPlatformClones > 30) {
